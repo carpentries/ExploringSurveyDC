@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<pre><code class="r">#! /usr/bin/env Rscript
+
+#
+#   Description: report plotting functions
+#   Analyzing pre and post survey results from Data Carpentry 
+#   Repo: https://github.com/carpentries/assessment-projects/tree/master/data-carpentry-projects
+#   Date: 2017, August 09 - 27
+#   Copyright (C) 2017 Paula Andrea Martinez
+#   ORCID iD 0000-0002-8990-1985
+
+source(file = &quot;scripts/installpkg.R&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(filename, &quot;r&quot;, encoding = encoding): cannot open file
+## &#39;scripts/installpkg.R&#39;: No such file or directory
+</code></pre>
+
+<pre><code>## Error in file(filename, &quot;r&quot;, encoding = encoding): cannot open the connection
+</code></pre>
+
+<pre><code class="r">#####################################
+# download files
+
+# download.file(&quot;https://raw.githubusercontent.com/carpentries/assessment-projects/master/data-carpentry-projects/pre-and-post-workshop-analysis/archived-survey-analysis/data/preworkshop_public_archived.csv&quot;, 
+#                 destfile = &quot;data/preworkshop_public_archived.csv&quot;, method = &quot;wininet&quot;)
+# 
+#  
+# download.file(&quot;https://raw.githubusercontent.com/carpentries/assessment-projects/master/data-carpentry-projects/pre-and-post-workshop-analysis/archived-survey-analysis/data/postworkshop_public_archived.csv&quot;, 
+#               destfile = &quot;data/postworkshop_public_archived.csv&quot;, method = &quot;wininet&quot;)
+
+############################################################################
+# Libraries
+library(tidyverse) # includes ggplot2
+library(scales)
+library(extrafont)
+library(SnowballC)
+library(wordcloud)
+
+############################################################################
+# Set blind-friendly colour Palette
+# http://www.cookbook-r.com/Graphs/Colors_%28ggplot2%29/
+# The palette with grey:
+cbPalette &lt;- c(&quot;#56B4E9&quot;, &quot;#009E73&quot;, &quot;#F0E442&quot;, &quot;#0072B2&quot;, &quot;#999999&quot;,&quot;#E69F00&quot;, &quot;#D55E00&quot;, &quot;#CC79A7&quot;, &quot;#90EE90&quot;)
+# To use for fills, add
+
+scale_fill_manual(values = cbPalette)
+</code></pre>
+
+<pre><code>## &lt;ggproto object: Class ScaleDiscrete, Scale&gt;
+##     aesthetics: fill
+##     axis_order: function
+##     break_info: function
+##     break_positions: function
+##     breaks: waiver
+##     call: call
+##     clone: function
+##     dimension: function
+##     drop: TRUE
+##     expand: waiver
+##     get_breaks: function
+##     get_breaks_minor: function
+##     get_labels: function
+##     get_limits: function
+##     guide: legend
+##     is_discrete: function
+##     is_empty: function
+##     labels: waiver
+##     limits: NULL
+##     make_sec_title: function
+##     make_title: function
+##     map: function
+##     map_df: function
+##     n.breaks.cache: NULL
+##     na.translate: TRUE
+##     na.value: NA
+##     name: waiver
+##     palette: function
+##     palette.cache: NULL
+##     position: left
+##     range: &lt;ggproto object: Class RangeDiscrete, Range&gt;
+##         range: NULL
+##         reset: function
+##         train: function
+##         super:  &lt;ggproto object: Class RangeDiscrete, Range&gt;
+##     reset: function
+##     scale_name: manual
+##     train: function
+##     train_df: function
+##     transform: function
+##     transform_df: function
+##     super:  &lt;ggproto object: Class ScaleDiscrete, Scale&gt;
+</code></pre>
+
+<pre><code class="r"># To use for line and point colors, add
+scale_colour_manual(values = cbPalette)
+</code></pre>
+
+<pre><code>## &lt;ggproto object: Class ScaleDiscrete, Scale&gt;
+##     aesthetics: colour
+##     axis_order: function
+##     break_info: function
+##     break_positions: function
+##     breaks: waiver
+##     call: call
+##     clone: function
+##     dimension: function
+##     drop: TRUE
+##     expand: waiver
+##     get_breaks: function
+##     get_breaks_minor: function
+##     get_labels: function
+##     get_limits: function
+##     guide: legend
+##     is_discrete: function
+##     is_empty: function
+##     labels: waiver
+##     limits: NULL
+##     make_sec_title: function
+##     make_title: function
+##     map: function
+##     map_df: function
+##     n.breaks.cache: NULL
+##     na.translate: TRUE
+##     na.value: NA
+##     name: waiver
+##     palette: function
+##     palette.cache: NULL
+##     position: left
+##     range: &lt;ggproto object: Class RangeDiscrete, Range&gt;
+##         range: NULL
+##         reset: function
+##         train: function
+##         super:  &lt;ggproto object: Class RangeDiscrete, Range&gt;
+##     reset: function
+##     scale_name: manual
+##     train: function
+##     train_df: function
+##     transform: function
+##     transform_df: function
+##     super:  &lt;ggproto object: Class ScaleDiscrete, Scale&gt;
+</code></pre>
+
+<pre><code class="r"># ###########################################################################
+# Exploring the dataset
+Exploring &lt;- function(filecsv){
+  ps &lt;- read.csv(filecsv)
+  print(filecsv)
+  print(paste(&quot;Data contains&quot;, 
+              dim(ps)[1], &quot;rows and&quot;, 
+              dim(ps)[2], &quot;columns&quot;)) 
+  return(ps)
+}
+# ###########################################################################
+# Reordering levels of a factor
+reorderLevels &lt;- function(x, vec){
+  x &lt;- factor(x,levels(x)[vec])
+  print(levels(x))
+  return(x)
+}
+# ###########################################################################
+# Define a helper function to change NAs from factor to character
+empty_as_na &lt;- function(x){
+  if(&quot;factor&quot; %in% class(x)) x &lt;- as.character(x) ## since ifelse wont work with factors
+  ifelse(as.character(x)!=&quot;&quot;, x, &quot;No answer&quot;)
+}
+# ###########################################################################
+# http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_%28ggplot2%29/
+# Multiple plot function
+#
+# ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects)
+# - cols:   Number of columns in layout
+# - layout: A matrix specifying the layout. If present, &#39;cols&#39; is ignored.
+#
+# If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
+# then plot 1 will go in the upper left, 2 will go in the upper right, and
+# 3 will go all the way across the bottom.
+#
+multiplot &lt;- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+
+  # Make a list from the ... arguments and plotlist
+  plots &lt;- c(list(...), plotlist)
+
+  numPlots = length(plots)
+
+  # If layout is NULL, then use &#39;cols&#39; to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout &lt;- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+
+  if (numPlots==1) {
+    print(plots[[1]])
+
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx &lt;- as.data.frame(which(layout == i, arr.ind = TRUE))
+
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+# ###########################################################################
+# Cleaning Epreworkshop
+cleanPreworkshopdata &lt;- function(df){
+  print(colnames(df))
+  # &quot;Start.Date&quot; # munging to year.survey
+  # &quot;End.Date&quot;                 &quot;When.Taking.Survey&quot; # ignored      
+  # &quot;First.Time&quot; # ignored
+  # &quot;Status&quot;   #munging and reorder
+  # &quot;Status.Other&quot;   # ignored          
+  # &quot;Department&quot;   # ignored 
+  # &quot;Discipline&quot;   #munging and reorder
+  # &quot;Discipline.Other&quot;   # ignored       
+  # [10] &quot;OS&quot;                       &quot;With.Friend&quot;              &quot;Programming.Usage&quot;       
+  # [13] &quot;Current.Tools.1&quot;          &quot;Current.Tools.2&quot;          &quot;Current.Tools.3&quot;         
+  # [16] &quot;Current.Tools.4&quot;          &quot;Current.Tools.5&quot;          &quot;Current.Tools.6&quot;         
+  # [19] &quot;Current.Tools.7&quot;      # ignored       
+  # &quot;Have.Dataset&quot;  #munging names          &quot;Data.Management.Strategy&quot;
+  # [22] &quot;Data.Analysis.Workflow&quot;   &quot;Data.Organization&quot;        &quot;Using.Scripting.Language&quot;
+  # [25] &quot;Using.R.or.Python&quot;        &quot;Value.of.SQL.or.Python&quot;   &quot;Hope.to.Learn&quot;           
+  # [28] &quot;Workshop.in.US&quot;           &quot;Age&quot;                      &quot;Gender&quot;                  
+  # [31] &quot;Gender.Other&quot;             &quot;Race&quot;                     &quot;Race.Other&quot;  
+  df$year.survey &lt;- as.factor(format(as.Date(as.character(df$Start.Date), &quot;%m/%d/%y&quot; ),&quot;%Y&quot;))
+  #print(levels(df$year.survey ))
+  levels(df$Status)[1] &lt;- &quot;No Answer&quot;
+  levels(df$Status)[5] &lt;- &quot;Other&quot;
+  levels(df$Status)[8] &lt;- &quot;Undergraduate Student&quot;
+  df$Status &lt;- reorderLevels(df$Status, c(8,3,6,2,7,4,5,1))
+  levels(df$Discipline)[1] &lt;- &quot;No Answer&quot;
+  levels(df$Have.Dataset)[2] &lt;- &quot;I am working on generating data&quot;
+  levels(df$Have.Dataset)[3] &lt;- &quot;I do not have data yet&quot;
+  levels(df$Have.Dataset)[4] &lt;- &quot;I have data and done a fair bit of analysis&quot;
+  levels(df$Have.Dataset)[5] &lt;- &quot;I have data but haven&#39;t started analyzing it&quot;
+  levels(df$Gender)[1] &lt;- &quot;No Answer&quot;
+  df$Gender &lt;- reorderLevels(df$Gender, c(2,3,4,1))
+  levels(df$Race)[1] &lt;- &quot;No Answer&quot;
+  levels(df$Race)[7] &lt;- &quot;Other&quot;
+  df$Race &lt;- reorderLevels(df$Race, c(2,3,4,5,6,9,8,7,1))
+  print(paste(&quot;Data contains&quot;, 
+              dim(df)[1], &quot;rows and&quot;, 
+              dim(df)[2], &quot;columns&quot;)) 
+  write.csv(file = &quot;data/clean_presurvey.csv&quot;, df)
+  return(df)
+}
+# ###########################################################################
+# Cleaning Epostworkshop
+cleanPostworkshopdata &lt;- function(df){
+  print(dim(df))
+  print(colnames(df))
+  # [1] &quot;Start.Date&quot;                &quot;End.Date&quot;                  &quot;When.Taking.Survey&quot;        &quot;First.Time&quot;               
+  # [5] &quot;Research&quot;                  &quot;Status&quot;                    &quot;Status.Other&quot;              &quot;Involvement&quot;              
+  # [9] &quot;Practical.Knowledge&quot;       &quot;Organize.Data&quot;             &quot;Use.OpenRefine&quot;            &quot;Import.Python&quot;            
+  # [13] &quot;Import.R&quot;                  &quot;Visualizations.in.Python&quot;  &quot;Visualizations.in.R&quot;       &quot;Construct.SQL&quot;            
+  # [17] &quot;Use.command.line&quot;          &quot;Skill.Level.Prior&quot;         &quot;Skill.Level.Following&quot;     &quot;Data.Organization&quot;        
+  # [21] &quot;Using.Scripting.Language&quot;  &quot;Using.R.or.Python&quot;         &quot;Value.of.SQL.or.Python&quot;    &quot;Application&quot;              
+  # [25] &quot;Worth.My.Time&quot;             &quot;Material&quot;                  &quot;Recommend&quot;                 &quot;Instructors.Clear.Answers&quot;
+  # [29] &quot;Instructors.Considerate&quot;   &quot;Instructors.Effective&quot;     &quot;Instructors.Enthusiastic&quot;  &quot;Workshop.in.US&quot;           
+  # [33] &quot;Age&quot;                       &quot;Gender&quot;                    &quot;Gender.Other&quot;              &quot;Race.American.Indian&quot;     
+  # [37] &quot;Race.Asian&quot;                &quot;Race.Black&quot;                &quot;Race.Hispanic&quot;             &quot;Race.Islander&quot;            
+  # [41] &quot;Race.White&quot;                &quot;Race.Prefer.Not&quot;           &quot;Race.Other&quot;          
+  df$year.survey &lt;- as.factor(format(as.Date(as.character(df$Start.Date), &quot;%m/%d/%y&quot; ),&quot;%Y&quot;))
+  #print(levels(df$year.survey ))
+  levels(df$Status)[1] &lt;- &quot;No Answer&quot;
+  levels(df$Status)[5] &lt;- &quot;Other&quot;
+  levels(df$Status)[8] &lt;- &quot;Undergraduate Student&quot;
+  df$Status &lt;- reorderLevels(df$Status, c(8,3,6,2,7,4,5,1))
+  levels(df$Gender)[1] &lt;- &quot;No Answer&quot;
+  df$Gender &lt;- reorderLevels(df$Gender, c(2,3,4,1))
+  # capitalize levels
+  levels(df$Workshop.in.US)[2] &lt;- &quot;No&quot;
+  levels(df$Workshop.in.US)[3] &lt;- &quot;Yes&quot;
+  print(paste(&quot;Data contains&quot;, 
+              dim(df)[1], &quot;rows and&quot;, 
+              dim(df)[2], &quot;columns&quot;)) 
+  write.csv(file = &quot;data/clean_postsurvey.csv&quot;, df)
+  return(df)
+
+}
+# ###########################################################################
+# ######### plotting ##############
+font_import(pattern=&quot;[T/t]ahoma&quot;, prompt = FALSE)
+</code></pre>
+
+<pre><code>## Scanning ttf files in /Library/Fonts/, /System/Library/Fonts, ~/Library/Fonts/ ...
+</code></pre>
+
+<pre><code>## Extracting .afm files from .ttf files...
+</code></pre>
+
+<pre><code>## /Library/Fonts/Tahoma Bold.ttf : Tahoma-Bold already registered in fonts database. Skipping.
+## /Library/Fonts/Tahoma.ttf : Tahoma already registered in fonts database. Skipping.
+## Found FontName for 0 fonts.
+## Scanning afm files in /Library/Frameworks/R.framework/Versions/3.4/Resources/library/extrafontdb/metrics
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FamilyName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FontName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FullName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^Weight&quot;, text): input string 4 is invalid in this locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FamilyName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FontName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^FullName&quot;, text): input string 4 is invalid in this
+## locale
+</code></pre>
+
+<pre><code>## Warning in grepl(&quot;^Weight&quot;, text): input string 4 is invalid in this locale
+</code></pre>
+
+<pre><code class="r">loadfonts()
+</code></pre>
+
+<pre><code>## Tahoma already registered with pdfFonts().
+</code></pre>
+
+<pre><code class="r"># ###########################################################################
+# Make barplots by Status 
+# Needs a dataframe and a title string, the name of the first column, its string name, and order vector
+# however this last attribute is not necessary
+plotByStatusGeneric &lt;- function(df, ti, colna, colstr, reorderingvec = NULL){
+  #StartbyFiltering colna Not Answered
+  print(dim(df))
+  print(colna)
+  y &lt;- droplevels(subset(df, df[[colna]] != &quot;&quot;))
+  print(dim(y))
+  print(table(y[[colna]]))
+  if(!is.null(reorderingvec)){
+    y[[colna]] &lt;- reorderLevels(y[[colna]], reorderingvec)
+  }
+  numoffacets &lt;- length((table(y[[colna]])))
+  perc &lt;- c()
+  for (f in 1:numoffacets){
+    perc[f] &lt;- round((table(y[[colna]])[f] * 100 / dim(y)[1]), digits = 2)
+  }
+  #####Plot Function Generic
+  ps &lt;- ggplot(data = y, aes( x = Status, fill= Status)) +
+    #coord_flip() +
+    geom_bar(aes(y = (..count..)/sum(..count..))) +
+    scale_fill_manual(values = cbPalette) +
+    theme_light() +
+    labs(x = &quot;Status&quot;, y = paste(&quot;Total respondents&quot;, dim(y)[1], &quot;shown in percentages&quot;)) +
+    ggtitle(paste(ti, &quot;responses by status and&quot;, colstr)) +
+    scale_y_continuous(labels = scales::percent) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(panel.grid.major.x = element_blank(),
+          axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.position=&quot;bottom&quot;,
+          legend.title = element_blank(),
+          strip.background = element_rect(fill =  &quot;#888888&quot;),
+          strip.placement = &quot;outside&quot;,
+          strip.switch.pad.grid = unit(0.1, &quot;cm&quot;),
+          text = element_text(family=&quot;Tahoma&quot;, size=12))+
+    facet_grid(reformulate(colna), &quot;.&quot;) # . ~ colna
+  ps &lt;- ps +  annotate(geom = &quot;text&quot;, label = paste0(perc, &quot;%&quot;), size = 4, 
+                       x = 4.5, y = dim(y)[1]/6000, fontface=&quot;bold&quot;,
+                       colour = &quot;#888888&quot;, family=&quot;Tahoma&quot;)
+  print(ps)
+  ggsave(filename =  paste(&quot;./plots/&quot;, ti, &quot;_&quot;,&quot;Status_&quot;, gsub(&quot;\\.&quot;, &quot;&quot;,colna),
+                           &quot;.png&quot;, sep = &quot;&quot;),
+         width = 15, height = 8, dpi = 200)
+}
+# ###########################################################################
+# A try to make a generic plot separated by status and 2 other facets
+# Needs a dataframe and a title string, the name of the first column, its string name, and order vector
+# The name of the second column, and order vector
+plotGeneric &lt;- function(df, ti, colna, colstr, reorderingvec = NULL, ext, reorderingvec2 = NULL ){
+  #StartbyFiltering colna Not Answered
+  print(dim(df))
+  print(colna)
+  print(ext)
+  y &lt;- droplevels(subset(df, df[[colna]] != &quot;&quot;))
+  y &lt;- droplevels(subset(y, y[[ext]] != &quot;&quot;))
+  print(dim(y))
+  if(!is.null(reorderingvec)){
+    y[[colna]] &lt;- reorderLevels(y[[colna]], reorderingvec)
+  }
+  if(!is.null(reorderingvec2)){
+    y[[ext]] &lt;- reorderLevels(y[[ext]], reorderingvec2)
+  }
+  print(table(y[[colna]],y[[ext]]))
+  numoffacets &lt;- length((table(y[[colna]],y[[ext]])))
+  perc &lt;- c()
+  for (f in 1:numoffacets){
+    perc[f] &lt;- round((table(y[[colna]],y[[ext]])[f] * 100 / dim(y)[1]), digits = 2)
+  }
+  #####Plot Function Generic
+  ps &lt;- ggplot(data = y, aes( x = Status, fill= Status) )+
+    #coord_flip() +
+    geom_bar(aes(y = (..count..)/sum(..count..))) +
+    scale_fill_manual(values = cbPalette) +
+    theme_light() + 
+    labs(x = &quot;Status&quot;, y = paste(&quot;Total respondents&quot;, dim(y)[1], &quot;shown in percentages&quot;)) +
+    ggtitle(paste(ti, &quot;responses by status and&quot;, colstr)) +
+    scale_y_continuous( labels = percent_format())+
+    theme(panel.grid.major.x =  element_blank(),
+          plot.title   = element_text(hjust = 0.5),
+          axis.text.x  = element_blank(),
+          axis.ticks.x = element_blank(),
+          legend.position = &quot;bottom&quot;,
+          legend.title    = element_blank(),
+          strip.background = element_rect(fill =  &quot;#888888&quot;),
+          strip.placement = &quot;outside&quot;,
+          strip.switch.pad.grid = unit(0.1, &quot;cm&quot;),
+          text=element_text(family=&quot;Tahoma&quot;, size=12))+
+    #facet_grid(reformulate(colna), &quot;.&quot;) # . ~ colna
+    facet_grid(eval(reformulate(colna, ext)))
+  ps &lt;- ps +  annotate(geom = &quot;text&quot;, label = paste0(perc, &quot;%&quot;), size = 4, 
+                       x = 4.5, y = dim(y)[1]/6000, fontface=&quot;bold&quot;,
+                       colour = &quot;#888888&quot;, family=&quot;Tahoma&quot;)
+  ggsave(filename =  paste(&quot;./plots/&quot;, ti, &quot;_&quot;,ext, &quot;_&quot;, gsub(&quot;\\.&quot;, &quot;&quot;,colna),
+                           &quot;.png&quot;, sep = &quot;&quot;),
+         width = 15, height = 8, dpi = 200)
+  print(ps)
+}
+# ###########################################################################
+# Plots for Gender, Race and Age should be only from US respondents
+# ###########################################################################
+# Plots by Gender should be only taken for answers within US 
+# Needs a dataframe and a title string, the order vector is not necessary
+plotByGender &lt;- function(df, ti, reorderingvec=NULL){
+  if(!is.null(reorderingvec)){
+    df[[&quot;Gender&quot;]] &lt;- reorderLevels(df[[&quot;Gender&quot;]], reorderingvec)
+  }
+  ps &lt;- ggplot(data = df, aes( x = Gender, fill = Gender )) +
+    #coord_flip() +
+    geom_bar(aes(y = (..count..)/sum(..count..)) ) +
+    scale_fill_manual(values = cbPalette) +
+    theme_light() +
+    labs(x = &quot;Gender&quot;, y = paste(&quot;Total respondents&quot;, dim(df)[1], &quot;shown in percentages&quot;)) +
+    ggtitle(paste(ti, &quot;responses by gender&quot;) ) +
+    scale_y_continuous(labels = scales::percent, limits = c(0, 0.7)) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.position=&quot;bottom&quot;,
+          legend.title = element_blank())
+  #print(ps)
+}
+# ###########################################################################
+# Plot simple barplot
+# Needs a dataframe and a title string, the name of the column, and how to label that column
+plotBarplot &lt;- function(df, ti, xnam, xnamelab){
+  ps &lt;- ggplot(data = df, aes_string( x = xnam, fill= xnam)) +
+    geom_bar(aes(y = (..count..)/sum(..count..))) +
+    scale_fill_manual(values = c(cbPalette, brewer.pal(8, &quot;Set3&quot;))) +
+    theme_light() +
+    labs(x = xnamelab, y = paste(&quot;Total respondents&quot;, dim(df)[1], &quot;shown in percentages&quot;)) +
+    ggtitle(paste(ti, &quot;responses by&quot;, xnamelab)) +
+    scale_y_continuous(labels = scales::percent) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(panel.grid.major.x =  element_blank(),
+          plot.title   = element_text(hjust = 0.5),
+          axis.text.x  = element_blank(),
+          axis.ticks.x = element_blank(),
+          legend.position = &quot;bottom&quot;,
+          legend.title    = element_blank(),
+          strip.background = element_rect(fill =  &quot;#888888&quot;),
+          strip.placement = &quot;outside&quot;,
+          strip.switch.pad.grid = unit(0.1, &quot;cm&quot;),
+          text=element_text(family=&quot;Tahoma&quot;, size=12))
+  print(ps)
+  ggsave(filename =  paste(&quot;plots/&quot;,ti,&quot;_&quot;,xnamelab, &quot;.png&quot;, sep = &quot;&quot;),
+         width = 12, height = 6, dpi = 120)
+}
+# ###########################################################################
+# Plot by Gender and Status
+# Needs a dataframe and a title string
+plotByGenderStatus &lt;- function(df, ti){
+  ps &lt;- ggplot(data = df, aes( x = Gender, fill= Gender)) +
+    geom_bar(aes(y = (..count..)/sum(..count..))) +
+    scale_fill_manual(values = cbPalette) +
+    theme_light() +
+    labs(x = &quot;Gender&quot;, y = paste(&quot;Total respondents&quot;, dim(df)[1], &quot;shown in percentages&quot;)) +
+    ggtitle(paste(ti, &quot;responses by gender and status&quot;)) +
+    scale_y_continuous(labels = scales::percent) +
+    theme(plot.title = element_text(hjust = 0.5)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.position=&quot;bottom&quot;,
+          legend.title = element_blank())+
+    facet_grid(. ~ Status)
+  print(ps)
+  #ggsave(filename =  paste(&quot;./plots/GendervsStatus-&quot;,ti,&quot;.png&quot;, sep = &quot;&quot;),
+  #       width = 12, height = 6, dpi = 120)
+}
+# ###########################################################################
+# Excluding &quot;Prefer not to say&quot; and &quot;No answer&quot; from Gender and Status
+ExcludeNANotGiven &lt;- function(df){
+  newpredf &lt;- data.frame(Gender = factor(df$Gender),
+                         Status = factor(df$Status))
+  print(head(newpredf))
+  print(str(newpredf))
+  print(table(newpredf$Gender))
+  print(table(newpredf))
+  x &lt;- subset(newpredf, newpredf$Gender == &quot;Male&quot; |newpredf$Gender == &quot;Female&quot;, drop = T)
+  x &lt;- subset(x, x$Status != &quot;No Answer&quot;, drop = T)
+  print(table(x))
+  y &lt;- droplevels(x)
+  print(table(y))
+  print(dim(y))
+  return(y)
+}
+# ###########################################################################
+# Make a Wordcloud , receives a column , and a name for the plot 
+myWordCloud &lt;- function(coln, nam){
+  # Reference example for wordcloud 
+  # http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know
+  mydata &lt;- as.character(coln) 
+  #First, we need to create a corpus
+  mydata &lt;- Corpus(VectorSource(mydata))
+  #Next, we will convert the corpus to a plain text document
+  mydata &lt;- tm_map(mydata, content_transformer(tolower))
+  # Remove numbers
+  mydata &lt;- tm_map(mydata, removeNumbers)
+  # Remove english common stopwords
+  mydata &lt;- tm_map(mydata, removeWords, stopwords(&quot;english&quot;))
+  # Remove your own stop word
+  # specify your stopwords as a character vector
+  mydata &lt;- tm_map(mydata, removeWords, c(&quot;the&quot;, &quot;this&quot;)) 
+  # Remove punctuations
+  mydata &lt;- tm_map(mydata, removePunctuation)
+  # Eliminate extra white spaces
+  mydata &lt;- tm_map(mydata, stripWhitespace)
+  # Text stemming
+  #jeopCorpus &lt;- tm_map(mydata, stemDocument)
+  # matrix
+  dtm &lt;- TermDocumentMatrix(mydata)
+  m &lt;- as.matrix(dtm)
+  v &lt;- sort(rowSums(m), decreasing=TRUE)
+  d &lt;- data.frame(word = names(v), freq=v)
+  head(d, 10)
+  set.seed(1234)
+  png(paste(&quot;plots/&quot;, nam, &quot;_wordcloud.png&quot;, sep = &quot;&quot;), 
+      width = 12, height = 8, units = &quot;in&quot;, res = 300)
+  wordcloud(words = d$word, freq = d$freq, scale=c(6,.5),
+            random.order = FALSE,   
+            colors = cbPalette)
+  dev.off()
+}
+# ###########################################################################
+</code></pre>
+
+</body>
+
+</html>
